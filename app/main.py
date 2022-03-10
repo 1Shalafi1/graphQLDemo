@@ -1,15 +1,11 @@
-from typing import Optional
+import datetime
 
 from fastapi import FastAPI
+from app.routes.actor import actor_router
 
 app = FastAPI()
+app.include_router(actor_router)
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+@app.get('/')
+def ping():
+    return f'pong {datetime.datetime.utcnow()}'
