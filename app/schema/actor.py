@@ -1,17 +1,20 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from app.schema.base import AbstractSchema
 
 
-class ActorBase(BaseModel):
-    actor_id: int
+class ActorBase(AbstractSchema):
     first_name: str
     last_name: str
-    last_update: datetime
 
     class Config:
         orm_mode = True
 
-class ActorInput(BaseModel):
-    first_name: str
-    last_name: str
+
+class ActorInput(ActorBase):
+    pass
+
+
+class ActorOutput(ActorBase):
+    actor_id: int
+    last_update: datetime

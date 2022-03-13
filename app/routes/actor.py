@@ -12,19 +12,19 @@ actor_router = APIRouter()
 
 @actor_router.get("/actors/", tags=['actors'], response_model=List[ActorBase])
 def _list(skip: int = 0, limit: int = 10, db: DbSession = Depends(get_db)):
-    return Actor.get_actors_list(db=db, skip=skip, limit=limit)
+    return Actor.get_list(db=db, skip=skip, limit=limit)
 
 
-@actor_router.get('/actor/{actor_id}', response_model=ActorBase)
+@actor_router.get('/actor/{actor_id}', tags=['actors'], response_model=ActorBase)
 def retrieve(actor_id: int, db: DbSession = Depends(get_db)):
-    return Actor.get_actor_by_id(db=db, actor_id=actor_id)
+    return Actor.get_by_id(db=db, actor_id=actor_id)
 
 
-@actor_router.post('/actor', response_model=ActorBase)
+@actor_router.post('/actor', tags=['actors'], response_model=ActorBase)
 def create(actor: ActorInput, db: DbSession = Depends(get_db)):
-    return Actor.set_actor(data=actor, db=db)
+    return Actor.create(data=actor, db=db)
 
 
-@actor_router.post('/actor/{actor_id}', response_model=ActorBase)
+@actor_router.post('/actor/{actor_id}', tags=['actors'], response_model=ActorBase)
 def update(actor_id: int, actor: ActorInput, db: DbSession = Depends(get_db)):
-    return Actor.update_actor(data=actor, actor_id=actor_id, db = db)
+    return Actor.update(data=actor, actor_id=actor_id, db = db)
