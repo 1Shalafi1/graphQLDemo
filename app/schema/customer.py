@@ -10,9 +10,6 @@ class CustomerBase(AbstractSchema):
     email: str
     active: bool
 
-    create_date: datetime
-    last_update: datetime
-
     class Config:
         orm_mode = True
 
@@ -21,3 +18,5 @@ class CustomerInput(CustomerBase):
 
 class CustomerOutput(CustomerBase):
     customer_id: int
+    create_date: datetime
+    last_update: datetime

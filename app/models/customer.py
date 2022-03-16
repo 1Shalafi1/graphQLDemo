@@ -14,6 +14,9 @@ class Customer(Base):
     __tablename__ = 'customer'
     __table_args__ = (
         Index('customer_pkey', 'customer_id'),
+        Index('idx_fk_address_id', 'address_id'),
+        Index('idx_fk_store_id', 'store_id'),
+        Index('idx_last_name', 'last_name'),
     )
 
     customer_id = Column(Integer, index=True, primary_key=True, autoincrement=True)
@@ -32,6 +35,7 @@ class Customer(Base):
         new_obj = cls(
             **data.dict(),
             last_update=datetime.utcnow(),
+            create_date=datetime.utcnow(),
         )
         db.add(new_obj)
         db.commit()
