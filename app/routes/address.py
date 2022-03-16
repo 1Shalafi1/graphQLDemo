@@ -25,6 +25,6 @@ def create(address: AddressInput, db: DbSession = Depends(get_db)):
     return Address.create(data=address, db=db)
 
 
-@address_router.post('/address/{address_id}', tags=['Addresses'], response_model=AddressOutput)
+@address_router.put('/address/{address_id}', tags=['Addresses'], response_model=AddressOutput)
 def update(address_id: int, address: AddressInput, db: DbSession = Depends(get_db)):
     return Address.update(data=address, address_id=address_id, db = db)

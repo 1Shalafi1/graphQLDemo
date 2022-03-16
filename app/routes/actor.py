@@ -25,6 +25,6 @@ def create(actor: ActorInput, db: DbSession = Depends(get_db)):
     return Actor.create(data=actor, db=db)
 
 
-@actor_router.post('/actor/{actor_id}', tags=['actors'], response_model=ActorBase)
+@actor_router.put('/actor/{actor_id}', tags=['actors'], response_model=ActorBase)
 def update(actor_id: int, actor: ActorInput, db: DbSession = Depends(get_db)):
     return Actor.update(data=actor, actor_id=actor_id, db = db)

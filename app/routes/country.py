@@ -25,6 +25,6 @@ def create(country: CountryInput, db: DbSession = Depends(get_db)):
     return Country.create(data=country, db=db)
 
 
-@country_router.post('/country/{country_id}', tags=['Countries'], response_model=CountryOutput)
+@country_router.put('/country/{country_id}', tags=['Countries'], response_model=CountryOutput)
 def update(country_id: int, country: CountryInput, db: DbSession = Depends(get_db)):
     return Country.update(data=country, obj_id=country_id, db=db)
