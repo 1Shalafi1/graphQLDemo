@@ -16,4 +16,4 @@ class CountryInput(CountryBase):
 
 class CountryOutput(CountryBase):
     country_id: int
-    last_update:  datetime
+    last_update: datetime

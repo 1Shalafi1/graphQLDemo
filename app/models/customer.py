@@ -3,7 +3,7 @@ from typing import List
 
 from fastapi import HTTPException
 from sqlalchemy import ForeignKey, VARCHAR
-from sqlalchemy import Integer, Column, TIMESTAMP, Index, LargeBinary, Boolean
+from sqlalchemy import Integer, Column, TIMESTAMP, Index, Boolean
 from sqlalchemy.orm import Session as DbSession
 
 from app.database import Base

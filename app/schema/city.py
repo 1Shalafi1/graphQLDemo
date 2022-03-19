@@ -17,4 +17,4 @@ class CityInput(CityBase):
 
 class CityOutput(CityBase):
     city_id: int
-    last_update:  datetime
+    last_update: datetime

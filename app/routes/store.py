@@ -27,4 +27,4 @@ def create(store: StoreInput, db: DbSession = Depends(get_db)):
 
 @store_router.put('/{store_id}', tags=['Stores'], response_model=StoreOutput)
 def update(store_id: int, store: StoreInput, db: DbSession = Depends(get_db)):
-    return Store.update(data=store, obj_id=store_id, db = db)
+    return Store.update(data=store, obj_id=store_id, db=db)

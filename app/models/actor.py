@@ -2,9 +2,10 @@ from datetime import datetime
 
 from fastapi import HTTPException
 from sqlalchemy import Integer, Column, String, TIMESTAMP, Index
-from sqlalchemy.orm import Session as DbSession
+from sqlalchemy.orm import Session as DbSession, relationship
 
 from app.database import Base
+from app.models.__relations_tables import film_actor
 from app.schema.actor import ActorInput, ActorBase
 
 
@@ -20,6 +21,8 @@ class Actor(Base):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     last_update = Column(TIMESTAMP)
+
+    films = relationship('Film', secondary=film_actor)
 
     @classmethod
     def get_list(cls, db: DbSession, limit: int = 10, skip: int = 0) -> ActorBase:
@@ -57,8 +60,5 @@ class Actor(Base):
 
         return db_object
 
-
-
 # SQlAlchemy model extras
 # TODO: Add triggers
-

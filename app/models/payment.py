@@ -1,10 +1,9 @@
 from datetime import datetime
 from typing import List
 
-import fastapi.exceptions
 from fastapi import HTTPException
-from sqlalchemy import ForeignKey, VARCHAR, Text, Numeric, String, ARRAY
-from sqlalchemy import Integer, Column, TIMESTAMP, Index, LargeBinary, Boolean
+from sqlalchemy import ForeignKey, Numeric
+from sqlalchemy import Integer, Column, TIMESTAMP, Index
 from sqlalchemy.orm import Session as DbSession
 
 from app.database import Base

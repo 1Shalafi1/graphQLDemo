@@ -3,17 +3,17 @@ from datetime import datetime
 from app.schema.base import AbstractSchema
 
 
-class LanguageBase(AbstractSchema):
+class CategoryBase(AbstractSchema):
     name: str
 
     class Config:
         orm_mode = True
 
 
-class LanguageInput(LanguageBase):
+class CategoryInput(CategoryBase):
     pass
 
 
-class LanguageOutput(LanguageBase):
-    language_id: int
+class CategoryOutput(CategoryBase):
+    category_id: int
     last_update: datetime

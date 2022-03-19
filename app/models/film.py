@@ -3,10 +3,11 @@ from typing import List
 
 from fastapi import HTTPException
 from sqlalchemy import ForeignKey, VARCHAR, Text, Numeric, String, ARRAY
-from sqlalchemy import Integer, Column, TIMESTAMP, Index, LargeBinary, Boolean
-from sqlalchemy.orm import Session as DbSession
+from sqlalchemy import Integer, Column, TIMESTAMP, Index
+from sqlalchemy.orm import Session as DbSession, relationship
 
 from app.database import Base
+from app.models.__relations_tables import film_actor, film_category
 from app.schema.film import FilmOutput, FilmInput
 
 
@@ -34,6 +35,9 @@ class Film(Base):
     fulltext = Column(String)
 
     last_update = Column(TIMESTAMP)
+
+    actors = relationship('Actor', secondary=film_actor)
+    categories = relationship('Category', secondary=film_category)
 
     @classmethod
     def create(cls, db: DbSession, data: FilmInput) -> FilmOutput:

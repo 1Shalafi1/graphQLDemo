@@ -13,8 +13,10 @@ class AddressBase(AbstractSchema):
     class Config:
         orm_mode = True
 
+
 class AddressInput(AddressBase):
     pass
+
 
 class AddressOutput(AddressBase):
     address_id: int

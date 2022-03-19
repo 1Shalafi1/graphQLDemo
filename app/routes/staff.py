@@ -27,4 +27,4 @@ def create(staff: StaffCreate, db: DbSession = Depends(get_db)):
 
 @staff_router.put('/{staff_id}', tags=['Staff'], response_model=StaffOutput)
 def update(staff_id: int, staff: StaffInput, db: DbSession = Depends(get_db)):
-    return Staff.update(data=staff, staff_id=staff_id, db = db)
+    return Staff.update(data=staff, staff_id=staff_id, db=db)

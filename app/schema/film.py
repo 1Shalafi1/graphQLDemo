@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import List
 
 from app.schema.base import AbstractSchema
+from app.schema.category import CategoryOutput
 
 
 class FilmBase(AbstractSchema):
@@ -31,4 +32,10 @@ class FilmInput(FilmBase):
 
 class FilmOutput(FilmBase):
     film_id: int
-    film_update: datetime
+    last_update: datetime
+
+
+class FilmOutputEnriched(FilmOutput):
+    from app.schema.actor import ActorOutput
+    actors: List[ActorOutput]
+    categories: List[CategoryOutput]

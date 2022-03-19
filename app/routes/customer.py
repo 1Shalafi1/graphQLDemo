@@ -27,4 +27,4 @@ def create(customer: CustomerInput, db: DbSession = Depends(get_db)):
 
 @customer_router.put('/{customer_id}', tags=['Customer'], response_model=CustomerOutput)
 def update(customer_id: int, customer: CustomerInput, db: DbSession = Depends(get_db)):
-    return Customer.update(data=customer, customer_id=customer_id, db = db)
+    return Customer.update(data=customer, customer_id=customer_id, db=db)

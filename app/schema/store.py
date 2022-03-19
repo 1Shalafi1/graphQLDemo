@@ -10,8 +10,10 @@ class StoreBase(AbstractSchema):
     class Config:
         orm_mode = True
 
+
 class StoreInput(StoreBase):
     pass
+
 
 class StoreOutput(StoreBase):
     store_id: int

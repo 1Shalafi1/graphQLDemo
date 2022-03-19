@@ -27,4 +27,4 @@ def create(city: CityInput, db: DbSession = Depends(get_db)):
 
 @city_router.put('/{city_id}', tags=['Cities'], response_model=CityOutput)
 def update(city_id: int, city: CityInput, db: DbSession = Depends(get_db)):
-    return City.update(data=city, obj_id=city_id, db = db)
+    return City.update(data=city, obj_id=city_id, db=db)

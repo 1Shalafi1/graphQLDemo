@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 from app.schema.base import AbstractSchema
 
@@ -18,3 +19,8 @@ class ActorInput(ActorBase):
 class ActorOutput(ActorBase):
     actor_id: int
     last_update: datetime
+
+
+class ActorOutputEnriched(ActorOutput):
+    from app.schema.film import FilmOutput
+    films: List[FilmOutput]

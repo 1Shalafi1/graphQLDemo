@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import List
 
 from fastapi import HTTPException
-from sqlalchemy import Integer, Column, TIMESTAMP, Index, LargeBinary, Boolean, Text
+from sqlalchemy import Integer, Column, TIMESTAMP, Index, Text
 from sqlalchemy.orm import Session as DbSession
 
 from app.database import Base

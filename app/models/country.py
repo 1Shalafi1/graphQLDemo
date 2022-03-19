@@ -2,8 +2,8 @@ from datetime import datetime
 from typing import List
 
 from fastapi import HTTPException
-from sqlalchemy import Integer, Column, String, TIMESTAMP, Index, ForeignKey, VARCHAR
-from sqlalchemy.orm import Session as DbSession, relationship
+from sqlalchemy import Integer, Column, TIMESTAMP, Index, VARCHAR
+from sqlalchemy.orm import Session as DbSession
 
 from app.database import Base
 from app.schema.country import CountryInput, CountryOutput

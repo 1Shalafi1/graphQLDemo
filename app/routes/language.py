@@ -27,4 +27,4 @@ def create(language: LanguageInput, db: DbSession = Depends(get_db)):
 
 @language_router.put('/{language_id}', tags=['languages'], response_model=LanguageBase)
 def update(language_id: int, language: LanguageInput, db: DbSession = Depends(get_db)):
-    return Language.update(data=language, language_id=language_id, db = db)
+    return Language.update(data=language, language_id=language_id, db=db)

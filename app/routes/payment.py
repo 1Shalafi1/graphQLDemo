@@ -27,4 +27,4 @@ def create(payment: PaymentInput, db: DbSession = Depends(get_db)):
 
 @payment_router.put('/{payment_id}', tags=['payments'], response_model=PaymentBase)
 def update(payment_id: int, payment: PaymentInput, db: DbSession = Depends(get_db)):
-    return Payment.update(data=payment, payment_id=payment_id, db = db)
+    return Payment.update(data=payment, payment_id=payment_id, db=db)

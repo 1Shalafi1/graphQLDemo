@@ -8,7 +8,6 @@ from sqlalchemy.orm import Session as DbSession
 
 from app.database import Base
 from app.schema.address import AddressInput, AddressOutput
-from app.schema.base import AbstractSchema
 
 
 class Address(Base):
