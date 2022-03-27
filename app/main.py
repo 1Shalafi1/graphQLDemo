@@ -1,7 +1,9 @@
 import datetime
 
+from ariadne.asgi import GraphQL
 from fastapi import FastAPI
 
+from app.graphql.ariadne_v1.resolvers import schema
 from app.routes.actor import actor_router
 from app.routes.address import address_router
 from app.routes.category import category_router
@@ -27,6 +29,11 @@ app.include_router(film_router, prefix='/film')
 app.include_router(language_router, prefix='/language')
 app.include_router(payment_router, prefix='/payment')
 app.include_router(category_router, prefix='/category')
+
+# graphql endpoint
+
+# ariadne lib
+app.add_route('/graphqlAriadne', GraphQL(schema=schema))
 
 
 # Default endpoints

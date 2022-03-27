@@ -1,4 +1,6 @@
+aniso8601==9.0.1
 anyio==3.5.0
+ariadne==0.14.1
 asgiref==3.5.0
 asttokens==2.0.5
 backcall==0.2.0
@@ -6,6 +8,9 @@ click==8.0.4
 decorator==5.1.1
 executing==0.8.3
 fastapi==0.74.1
+graphene==3.0
+graphql-core==3.1.7
+graphql-relay==3.1.5
 greenlet==1.1.2
 h11==0.13.0
 httptools==0.3.0

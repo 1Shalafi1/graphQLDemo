@@ -11,7 +11,7 @@ class FilmBase(AbstractSchema):
 
     title: str
     description: str
-    release_year: datetime
+    release_year: str
     rental_duration: int
     rental_rate: int
     length: int

@@ -56,6 +56,10 @@ class Film(Base):
         return db.query(cls).offset(skip).limit(limit).all()
 
     @classmethod
+    def get_list_by_id(cls, db: DbSession, ids: List[int]):
+        return db.query(cls).filter(cls.film_id.in_(ids))
+
+    @classmethod
     def get_by_id(cls, db: DbSession, film_id: int) -> FilmOutput:
         return db.query(cls).filter(cls.film_id == film_id).first()
 
