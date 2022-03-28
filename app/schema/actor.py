@@ -22,5 +22,5 @@ class ActorOutput(ActorBase):
 
 
 class ActorOutputEnriched(ActorOutput):
-    from app.schema.film import FilmOutput
-    films: List[FilmOutput]
+    from app.schema.film import FilmOutputWithCategories
+    films: List[FilmOutputWithCategories]

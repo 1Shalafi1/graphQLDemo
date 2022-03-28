@@ -1,9 +1,18 @@
 import decimal
 from datetime import datetime
-from typing import List
+from enum import Enum
+from typing import List, Optional
 
 from app.schema.base import AbstractSchema
 from app.schema.category import CategoryOutput
+
+class MPPARatingEnum(str, Enum):
+    G = 'G'
+    PG = 'PG'
+    PG13 = 'PG-13'
+    R = 'R'
+    NC17='NC-17'
+
 
 
 class FilmBase(AbstractSchema):
@@ -16,11 +25,11 @@ class FilmBase(AbstractSchema):
     rental_rate: int
     length: int
     replacement_cost: decimal.Decimal
-    rating: str
+    rating: MPPARatingEnum
 
-    special_features: List[str]
+    special_features: List[str] = []
 
-    fulltext: str
+    fulltext: str = ""
 
     class Config:
         orm_mode = True
@@ -33,6 +42,10 @@ class FilmInput(FilmBase):
 class FilmOutput(FilmBase):
     film_id: int
     last_update: datetime
+
+
+class FilmOutputWithCategories(FilmOutput):
+    categories: List[CategoryOutput]
 
 
 class FilmOutputEnriched(FilmOutput):
