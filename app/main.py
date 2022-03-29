@@ -2,8 +2,11 @@ import datetime
 
 from ariadne.asgi import GraphQL
 from fastapi import FastAPI
+from strawberry.fastapi import GraphQLRouter
 
-from app.graphql.ariadne_v1.resolvers import schema
+from app.graphql.ariadne_v1.resolvers import schema as ariadne_schema
+from app.graphql.strawberry_v1 import schema as strawberry_schema
+from app.graphql.strawberry_v1.utils import get_context
 from app.routes.actor import actor_router
 from app.routes.address import address_router
 from app.routes.category import category_router
@@ -30,11 +33,18 @@ app.include_router(language_router, prefix='/language')
 app.include_router(payment_router, prefix='/payment')
 app.include_router(category_router, prefix='/category')
 
+
 # graphql endpoint
 
 # ariadne lib
-app.add_route('/graphqlAriadne', GraphQL(schema=schema))
+app.add_route('/graphqlAriadne', GraphQL(schema=ariadne_schema))
 
+# strawberry lib
+graphql_app = GraphQLRouter(
+    strawberry_schema,
+    context_getter=get_context
+)
+app.include_router(graphql_app, prefix="/graphqlStrawberry")
 
 # Default endpoints
 @app.get('/')

@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import List
 
+import strawberry
+
 from app.schema.base import AbstractSchema
 
 
